@@ -8,13 +8,8 @@ class Solution(object):
         freq = {}
         for num in nums:
             freq[num] = freq.get(num,0) + 1 
-        i = 0
         sortedFreq = sorted(freq.items(),key=lambda x: x[1], reverse=True )
-        returnList = []
-        for key,value in sortedFreq:
-            if i < k:
-                returnList.append(key)
-            else:
-                break
-            i += 1
-        return returnList
+        return [num for num,count in sortedFreq[:k]]
+
+if __name__ == "__main__":
+    print(Solution().topKFrequent([1,1,1,2,2,3], 2))
